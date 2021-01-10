@@ -15,7 +15,7 @@ namespace Mini_Pjt_Shopping.Controllers
     {
         MiniProject_ShopEntities entities = new MiniProject_ShopEntities();
 
-        
+        [ActionName("Items")]
         [HttpGet]
         public HttpResponseMessage GetWishlist(int id)
         {
@@ -31,7 +31,7 @@ namespace Mini_Pjt_Shopping.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, prodlist);
 
         }
-
+        [ActionName("Add")]
         [HttpPost]
         public HttpResponseMessage AddToWishlist(Wishlist wish)
         {
@@ -54,18 +54,18 @@ namespace Mini_Pjt_Shopping.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, "Added to wishlist");
         }
-
-        [HttpDelete]
-        public HttpResponseMessage DelWishItem(Wishlist wish)
+        [ActionName("Delete")]
+        [HttpPut]
+        public HttpResponseMessage DelWishItem(int id,Wishlist wish)
         {
-            Wishlist wish1 = entities.Wishlists.Where(u => u.User_Id == wish.User_Id && u.Prod_Id == wish.Prod_Id).FirstOrDefault();
+            Wishlist wish1 = entities.Wishlists.Where(u => u.User_Id == id && u.Prod_Id == wish.Prod_Id).FirstOrDefault();
             if(wish1!=null)
             {
                 entities.Wishlists.Remove(wish1);
                 entities.SaveChanges();
             }
             else
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "Not Present in Wishlist");
+                return Request.CreateResponse(HttpStatusCode.Accepted, "Not Present in Wishlist");
 
             return Request.CreateResponse(HttpStatusCode.OK, "Product Removed From Wishlist");
         }

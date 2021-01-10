@@ -128,6 +128,12 @@
     <Compile Include="Models\GetAllPdts_Result.cs">
       <DependentUpon>OnlineShopping.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetCartItems_Result.cs">
+      <DependentUpon>OnlineShopping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetCartItem_Result.cs">
+      <DependentUpon>OnlineShopping.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetCart_Result.cs">
       <DependentUpon>OnlineShopping.tt</DependentUpon>
     </Compile>
@@ -165,6 +171,15 @@
       <DependentUpon>OnlineShopping.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Retailer.cs">
+      <DependentUpon>OnlineShopping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_GetAllPdt_Result.cs">
+      <DependentUpon>OnlineShopping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_GetOnePdt_Result.cs">
+      <DependentUpon>OnlineShopping.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Pdts_Of_One_Category_Result.cs">
       <DependentUpon>OnlineShopping.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Update_Products.cs">

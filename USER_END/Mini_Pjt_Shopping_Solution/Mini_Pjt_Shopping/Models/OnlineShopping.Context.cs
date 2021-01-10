@@ -169,6 +169,97 @@ public partial class MiniProject_ShopEntities : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCart_Result>("GetCart", useridParameter);
     }
 
+
+    public virtual ObjectResult<sp_GetAllPdt_Result> sp_GetAllPdt()
+    {
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetAllPdt_Result>("sp_GetAllPdt");
+    }
+
+
+    public virtual ObjectResult<sp_GetOnePdt_Result> sp_GetOnePdt(Nullable<int> id)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("id", id) :
+            new ObjectParameter("id", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetOnePdt_Result>("sp_GetOnePdt", idParameter);
+    }
+
+
+    public virtual ObjectResult<sp_Pdts_Of_One_Category_Result> sp_Pdts_Of_One_Category(Nullable<int> cat_id)
+    {
+
+        var cat_idParameter = cat_id.HasValue ?
+            new ObjectParameter("cat_id", cat_id) :
+            new ObjectParameter("cat_id", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Pdts_Of_One_Category_Result>("sp_Pdts_Of_One_Category", cat_idParameter);
+    }
+
+
+    public virtual ObjectResult<GetCartItem_Result> GetCartItem(Nullable<int> userid)
+    {
+
+        var useridParameter = userid.HasValue ?
+            new ObjectParameter("userid", userid) :
+            new ObjectParameter("userid", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCartItem_Result>("GetCartItem", useridParameter);
+    }
+
+
+    public virtual ObjectResult<GetCartItems_Result> GetCartItems(Nullable<int> userid)
+    {
+
+        var useridParameter = userid.HasValue ?
+            new ObjectParameter("userid", userid) :
+            new ObjectParameter("userid", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCartItems_Result>("GetCartItems", useridParameter);
+    }
+
+
+    public virtual int decQty(Nullable<int> id)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("id", id) :
+            new ObjectParameter("id", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("decQty", idParameter);
+    }
+
+
+    public virtual int incQty(Nullable<int> id)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("id", id) :
+            new ObjectParameter("id", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("incQty", idParameter);
+    }
+
+
+    public virtual ObjectResult<Nullable<decimal>> CalTotal(Nullable<int> id)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("id", id) :
+            new ObjectParameter("id", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CalTotal", idParameter);
+    }
+
 }
 
 }

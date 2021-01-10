@@ -36,10 +36,11 @@ item:any;
     
     this.cartService.addToCart(this.cart).subscribe(data=>console.log(data));
   }
-  /*removeFromWishlist(item:Wishlist)
+  removeFromWishlist(wish1:Wishlist)
   {
-    this.wishService.removeFromWishlist(item).subscribe(data=>console.log(data));
-  }*/
+    this.wishService.removeFromWishlist(this.id,wish1).subscribe(data=>console.log(data));
+    window.location.reload();
+  }
   ngOnInit(): void {
   }
 

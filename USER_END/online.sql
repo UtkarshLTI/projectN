@@ -179,7 +179,7 @@ begin
 	insert into Wishlist values (@userid,@prodid)
 end
 
-exec AddToWishlist 1,101
+exec AddToWishlist 2,101
 delete Wishlist
 
 create proc GetWishItem @prodid int
@@ -188,18 +188,64 @@ begin
 	select * from Products where Prod_Id= @prodid
 end
 
-create proc AddTOCart @userid int ,@prodid int , @prod_qty int , @prod_price decimal
+alter proc AddTOCart @userid int ,@prodid int , @prod_qty int , @prod_price decimal
 as
 begin
-	insert into Cart values (@userid,@prodid,@prod_qty,@prod_price)
+	insert into Cart values (@userid,@prodid,1,@prod_price)
 end  
 
-create procedure GetCart @userid int
+create procedure GetCartItems @userid int
 as
 begin
-select * from Cart where User_Id = @userid
+select c.Cart_Id, c.User_Id,c.Prod_Id, p.Prod_Name Prod_Name, p.Prod_Image Prod_Image,p.Prod_Description Prod_Description, c.Prod_Quantity,c.Prod_Price from Cart c join Products p
+on c.Prod_Id=p.Prod_Id
+ where User_Id = @userid
 end
 
 exec AddTOCart 1, 101,2,3456
 
-exec AddTOCart 2, 105,2,3456
+exec AddTOCart 2, 101,4,1231
+
+drop proc GetCart
+
+exec GetCartItems 1
+
+create proc incQty(@id int)
+as
+begin
+	update Cart 
+	set Prod_Quantity +=1
+	where Cart_Id=@id
+end
+
+create proc decQty(@id int)
+as
+begin
+	update Cart 
+	set Prod_Quantity -=1
+	where Cart_Id=@id
+end
+exec  decQty 8
+
+select * from Cart
+exec AddToWishlist 2,103
+select * from Wishlist
+
+create proc CalTotal(@id int)
+as
+begin
+	select sum(Prod_Quantity*Prod_Price) from Cart where User_Id = @id
+end
+exec CalTotal 2
+alter proc reduceQty1(@id int)
+as
+begin
+	update Products set Prod_Quantity -= (select Prod_Quantity from Cart where User_Id = @id , Prod_Id ) where Prod_id in
+	(select Prod_Id from Cart where User_Id = @id) 
+end
+
+select * from Products
+select * from Cart
+exec AddTOCart 1,103,1,1200
+
+exec reduceQty1 1
