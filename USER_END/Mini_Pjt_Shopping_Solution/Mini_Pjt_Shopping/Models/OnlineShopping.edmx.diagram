@@ -23,6 +23,10 @@
         <AssociationConnector Association="MiniProject_ShopModel.FK__Update_Pr__Prod___5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="MiniProject_ShopModel.FK__Wishlist__Prod_I__5BE2A6F2" ManuallyRouted="false" />
         <AssociationConnector Association="MiniProject_ShopModel.FK__Wishlist__User_I__5AEE82B9" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MiniProject_ShopModel.Compare" Width="1.5" PointX="11.25" PointY="4.5" />
+        <AssociationConnector Association="MiniProject_ShopModel.FK__Compare__Prod_Id__70DDC3D8" />
+        <AssociationConnector Association="MiniProject_ShopModel.FK__Compare__User_Id__6FE99F9F" />
+        <AssociationConnector Association="MiniProject_ShopModel.FK__Compare__Categor__778AC167" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

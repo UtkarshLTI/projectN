@@ -249,3 +249,25 @@ select * from Cart
 exec AddTOCart 1,103,1,1200
 
 exec reduceQty1 1
+------------------------------------------------------------------------------------------
+alter proc AddToCompare @userid int, @prodid int, @catid int
+as
+begin
+	insert into Compare values (@userid,@prodid,@catid)
+end
+
+exec AddToCompare 1,101,1
+
+
+Create table Compare(Compare_Id int primary key identity(1,1),
+User_Id int references Users(User_Id),
+Prod_Id int references Products(Prod_Id),
+Category_Id int references Category(Category_Id))
+
+drop table Compare
+create procedure GetComparelist @userid int
+as
+begin
+select * from Compare where User_Id = @userid
+end
+select * from Compare

@@ -16,6 +16,7 @@ import { WishService } from './services/wish.service';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './services/cart.service';
 import { CompareComponent } from './compare/compare.component';
+import { CompareService } from './services/compare.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { CompareComponent } from './compare/compare.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [PdtService,WishService,CartService],
+  providers: [PdtService,WishService,CartService,CompareService],
   bootstrap: [AppComponent]
 })
 

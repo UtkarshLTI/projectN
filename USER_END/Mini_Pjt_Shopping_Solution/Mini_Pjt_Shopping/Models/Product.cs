@@ -30,6 +30,8 @@ public partial class Product
 
         this.Wishlists = new HashSet<Wishlist>();
 
+        this.Compares = new HashSet<Compare>();
+
     }
 
 
@@ -72,6 +74,10 @@ public partial class Product
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Wishlist> Wishlists { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Compare> Compares { get; set; }
 
 }
 

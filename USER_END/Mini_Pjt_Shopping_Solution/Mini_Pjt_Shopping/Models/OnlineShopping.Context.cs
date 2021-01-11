@@ -51,6 +51,8 @@ public partial class MiniProject_ShopEntities : DbContext
 
     public virtual DbSet<Wishlist> Wishlists { get; set; }
 
+    public virtual DbSet<Compare> Compares { get; set; }
+
 
     public virtual ObjectResult<GetAllPdts_Result> GetAllPdts()
     {
@@ -258,6 +260,64 @@ public partial class MiniProject_ShopEntities : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("CalTotal", idParameter);
+    }
+
+
+    public virtual int AddToCompare(Nullable<int> userid, Nullable<int> prodid, Nullable<int> catid)
+    {
+
+        var useridParameter = userid.HasValue ?
+            new ObjectParameter("userid", userid) :
+            new ObjectParameter("userid", typeof(int));
+
+
+        var prodidParameter = prodid.HasValue ?
+            new ObjectParameter("prodid", prodid) :
+            new ObjectParameter("prodid", typeof(int));
+
+
+        var catidParameter = catid.HasValue ?
+            new ObjectParameter("catid", catid) :
+            new ObjectParameter("catid", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddToCompare", useridParameter, prodidParameter, catidParameter);
+    }
+
+
+    public virtual ObjectResult<GetComparelist_Result> GetComparelist(Nullable<int> userid)
+    {
+
+        var useridParameter = userid.HasValue ?
+            new ObjectParameter("userid", userid) :
+            new ObjectParameter("userid", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetComparelist_Result>("GetComparelist", useridParameter);
+    }
+
+
+    public virtual int reduceQty(Nullable<int> id)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("id", id) :
+            new ObjectParameter("id", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("reduceQty", idParameter);
+    }
+
+
+    public virtual int reduceQty1(Nullable<int> id)
+    {
+
+        var idParameter = id.HasValue ?
+            new ObjectParameter("id", id) :
+            new ObjectParameter("id", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("reduceQty1", idParameter);
     }
 
 }

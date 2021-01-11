@@ -24,6 +24,8 @@ public partial class Category
 
         this.Products = new HashSet<Product>();
 
+        this.Compares = new HashSet<Compare>();
+
     }
 
 
@@ -36,6 +38,10 @@ public partial class Category
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Product> Products { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Compare> Compares { get; set; }
 
 }
 

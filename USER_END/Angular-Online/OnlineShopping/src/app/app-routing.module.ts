@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { CatdetailsComponent } from './catdetails/catdetails.component';
+import { CompareComponent } from './compare/compare.component';
 import { GetallpdtComponent } from './getallpdt/getallpdt.component';
 import { PdtdetailComponent } from './pdtdetail/pdtdetail.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path:"Details/:id",component:PdtdetailComponent},
   {path:"DetailsOfCategory/:id",component:CatdetailsComponent},
   {path:"Wishlist/:id",component:WishlistComponent},
-  {path:"Cart/:id",component:CartComponent}
+  {path:"Cart/:id",component:CartComponent},
+  {path:"Compare/:id",component:CompareComponent}
 ];
 
 @NgModule({
